@@ -1,0 +1,934 @@
+<div class="wfilter" style="" ng-show="visible &amp;&amp; profileFilterLoading !== true" w-hotkey="[{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:wFilterVM.doFilter,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" data-developer-bar="prepend">
+  <!-- ngIf: !notShowCloseFilter --><a class="close-filter-icon close-button ng-scope" ng-click="onCloseFilter()" ng-if="!notShowCloseFilter"></a><!-- end ngIf: !notShowCloseFilter -->
+
+  <tasy-wmdetail w-onload="detailManager.onLoadDetail($handler)" w-onready="detailManager.onReadyDetail()" title-visible="false" data="detailRecord" w-onafterloadrecords="afterLoadRecords()" w-onbeforeloadrecords="onBeforePopulateFilter()" detail-meta-data="detailMetaData" w-meta-data-service="wFilterMetadata" class="no-gutter ng-isolate-scope" store="detailStore" ng-hide="hasOnlyAdvancedFilter()" w-dark-skin="factory.isDarkComponent" parent-type="filter"><div style="display: none;" class="toast-area"></div>
+<div tabindex="-1" class="w-mdetail" ng-paste="handlepaste(this, $event)" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+s&quot;,&quot;callback&quot;:wMDetailVM.save,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+alt+s&quot;,&quot;callback&quot;:wMDetailVM.saveAndAdd,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]">
+  <div class="drag-hover drag-hover-border ng-hide" ng-show="onDragOver">
+    <div class="drag-hover drag-hover-glass"></div>
+    <div class="dragenter-hover-message-box">
+      <div class="dragenter-hover-message-box-img"></div>
+      <span class="dialog-text ng-binding">Arraste e solte para anexar</span>
+    </div>
+  </div>
+
+  <div class="w-mdetail__header ng-hide" ng-show="titleVisible">
+    <div class="w-mdetail__title ng-binding">
+    </div>
+    <div class="w-mdetail__subtitle">
+    </div>
+    <div class="w-mdetail__buttons">
+    </div>
+  </div>
+
+  <div class="w-mdetail__outer-container"><form class="w-mdetail__container ng-pristine ng-valid ng-scope ng-isolate-scope ng-valid-required ng-valid-invalid-date ng-valid-mask" name="detail_2" onsubmit="return false;" tasy-taborder-control="" wscroll-info=""><div class="w-form" id="detail_2_container"><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['NR_SEQUENCIA']" w-component-handler="handlersComponent['NR_SEQUENCIA']" w-attr-name="NR_SEQUENCIA" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_x46a1jxmwn">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Sequência " id="label_x46a1jxmwn"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Sequência </span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wtextboxlocator w-model="record['NR_SEQUENCIA']" ng-model-options="{ linkedData: undefined }" w-onload="loadHandlerComponent($handler, &quot;NR_SEQUENCIA&quot;, &quot;undefined&quot;)" w-onchange="openLocatorChanged($handler, $event)" w-onselect="onLocatorSelect($handler, $event)" w-params="record" w-externalmetaatributos="detailMetaData.allAttributes" w-ondisableautofilled="onDisableAutoFilled('NR_SEQUENCIA', undefined)" config="{&quot;nrSeqDicObjeto&quot;:1064461,&quot;label&quot;:&quot;Sequência &quot;,&quot;nmAtributo&quot;:&quot;NR_SEQUENCIA&quot;,&quot;nrSeqLocalizador&quot;:12891,&quot;ieType&quot;:&quot;tbloc&quot;,&quot;ieRestringeEstab&quot;:false,&quot;ieRestringeEmpresa&quot;:false,&quot;numeric&quot;:true,&quot;codeFunctionExternalLocator&quot;:0,&quot;multiselect&quot;:false,&quot;ehrLocatorSQLEnabled&quot;:false}" data-testid="NR_SEQUENCIA" class="ng-scope ng-isolate-scope"><div class="textbox-locator textbox-locator-container textbox-locator__enable-focus" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="-1" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+l&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]">
+  <div class="has-text-box enable" style="width:100%;">
+    
+      <div class="textbox-locator textbox-locator-code-container span2" ng-class="{'ng-invalid-custom-function': noResultSearch &amp;&amp; !config.multiselect}">
+        <tasy-wtextbox w-onload="onTextboxLoad($handler)" w-model="value" w-onkeypress="onKeyPress($event)" w-onfocus="!isReadOnly() &amp;&amp; handler.events.onFocus.fireEvent($event)" w-onchange="onChange($event.newValue, $event.oldValue)" w-onblur=" fireOnBlur($event)" is-inside-locator="true" desc="desc" data-touch="false" class="ng-isolate-scope"><div title="" class="text-box-container">
+  <div class="text-box-wrapper">
+    <input class="gwt-TextBox  ng-valid ng-valid-required ng-pristine ng-touched default-border" only-numbers="true" name="NR_SEQUENCIA" width="px" ng-model="value" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+y&quot;,&quot;callback&quot;:wTextboxVM.doRedo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+z&quot;,&quot;callback&quot;:wTextboxVM.doUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" ng-required="isRequired()" w-validator="" w-mask="clinical(maxInt:9999,maxFrac:0, gSize:9999, lgSize:9999)" ng-trim="false" autocomplete="off" onfocus="this.select();" aria-readonly="false" aria-required="false" aria-disabled="false" maxlength="999999" nmatributo="NR_SEQUENCIA" tipoatributo="NUMBER" underline-mask="true">
+    <span class="span-with-warning ng-hide"></span>
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="">
+  </div>
+  <!-- ngIf: ::unitOfMeasurement -->
+</div>
+</tasy-wtextbox>
+      </div>
+
+      <div class="textbox-locator-description textbox-locator-description-container span10">
+        <input type="text" class="gwt-TextBox disable ng-pristine ng-untouched ng-valid" name="txDescription" ng-model="description" disabled="disabled" readonly="readonly" autocomplete="off">
+      </div>
+
+        <!-- ngIf: config.multiselect && hasMore -->
+
+      <input type="button" class="has-locator input-open-locator" tabindex="-1">
+
+  </div>
+
+  <button type="button" class="btn-save-add ng-binding" style="padding: 8px 0px 0px; display: none;">Adicionar outro</button>
+
+  <tasy-wstandardlocator w-standard-locator-handler="handlerStandardLocator" w-onfilterload="onStandardLocatorFilterLoad()" class="ng-isolate-scope"><div style="width: 100%;">
+</div>
+</tasy-wstandardlocator>
+</div>
+</tasy-wtextboxlocator></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['CNPJ_WJTFL']" w-component-handler="handlersComponent['CNPJ_WJTFL']" w-attr-name="CNPJ_WJTFL" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_zjt263693q">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="CNPJ" id="label_zjt263693q"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">CNPJ</span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wtextboxlocator w-model="record['CNPJ_WJTFL']" ng-model-options="{ linkedData: undefined }" w-onload="loadHandlerComponent($handler, &quot;CNPJ_WJTFL&quot;, &quot;undefined&quot;)" w-onchange="openLocatorChanged($handler, $event)" w-onselect="onLocatorSelect($handler, $event)" w-params="record" w-externalmetaatributos="detailMetaData.allAttributes" w-ondisableautofilled="onDisableAutoFilled('CNPJ_WJTFL', undefined)" config="{&quot;nrSeqDicObjeto&quot;:761280,&quot;label&quot;:&quot;CNPJ&quot;,&quot;nmAtributo&quot;:&quot;CNPJ_WJTFL&quot;,&quot;nrSeqLocalizador&quot;:12746,&quot;ieType&quot;:&quot;tbloc&quot;,&quot;ieRestringeEstab&quot;:false,&quot;ieRestringeEmpresa&quot;:false,&quot;numeric&quot;:false,&quot;nameFieldResultExternalLocator&quot;:&quot;CD_CGC&quot;,&quot;codeFunctionExternalLocator&quot;:0,&quot;multiselect&quot;:false,&quot;ehrLocatorSQLEnabled&quot;:false}" data-testid="CNPJ_WJTFL" class="ng-scope ng-isolate-scope"><div class="textbox-locator textbox-locator-container textbox-locator__enable-focus" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="-1" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+l&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]">
+  <div class="has-text-box enable" style="width:100%;">
+    
+      <div class="textbox-locator textbox-locator-code-container span2" ng-class="{'ng-invalid-custom-function': noResultSearch &amp;&amp; !config.multiselect}">
+        <tasy-wtextbox w-onload="onTextboxLoad($handler)" w-model="value" w-onkeypress="onKeyPress($event)" w-onfocus="!isReadOnly() &amp;&amp; handler.events.onFocus.fireEvent($event)" w-onchange="onChange($event.newValue, $event.oldValue)" w-onblur=" fireOnBlur($event)" is-inside-locator="true" desc="desc" data-touch="false" class="ng-isolate-scope"><div title="" class="text-box-container">
+  <div class="text-box-wrapper">
+    <input class="gwt-TextBox  ng-valid ng-valid-required ng-pristine ng-untouched" only-numbers="false" name="CNPJ_WJTFL" width="px" ng-model="value" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+y&quot;,&quot;callback&quot;:wTextboxVM.doRedo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+z&quot;,&quot;callback&quot;:wTextboxVM.doUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" ng-required="isRequired()" w-validator="" w-mask="" ng-trim="false" autocomplete="off" onfocus="this.select();" aria-readonly="false" aria-required="false" aria-disabled="false" maxlength="999999" nmatributo="CNPJ_WJTFL" tipoatributo="VISUAL">
+    <span class="span-with-warning ng-hide"></span>
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="">
+  </div>
+  <!-- ngIf: ::unitOfMeasurement -->
+</div>
+</tasy-wtextbox>
+      </div>
+
+      <div class="textbox-locator-description textbox-locator-description-container span10">
+        <input type="text" class="gwt-TextBox disable ng-pristine ng-untouched ng-valid" name="txDescription" ng-model="description" disabled="disabled" readonly="readonly" autocomplete="off">
+      </div>
+
+        <!-- ngIf: config.multiselect && hasMore -->
+
+      <input type="button" class="has-locator input-open-locator" tabindex="-1">
+
+  </div>
+
+  <button type="button" class="btn-save-add ng-binding" style="padding: 8px 0px 0px; display: none;">Adicionar outro</button>
+
+  <tasy-wstandardlocator w-standard-locator-handler="handlerStandardLocator" w-onfilterload="onStandardLocatorFilterLoad()" class="ng-isolate-scope"><div style="width: 100%;">
+</div>
+</tasy-wstandardlocator>
+</div>
+</tasy-wtextboxlocator></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['CD_COORDENADOR']" w-component-handler="handlersComponent['CD_COORDENADOR']" w-attr-name="CD_COORDENADOR" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_ntg58wkrn8">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Coordenador" id="label_ntg58wkrn8"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Coordenador</span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wtextboxlocator w-model="record['CD_COORDENADOR']" ng-model-options="{ linkedData: undefined }" w-onload="loadHandlerComponent($handler, &quot;CD_COORDENADOR&quot;, &quot;undefined&quot;)" w-onchange="openLocatorChanged($handler, $event)" w-onselect="onLocatorSelect($handler, $event)" w-params="record" w-externalmetaatributos="detailMetaData.allAttributes" w-ondisableautofilled="onDisableAutoFilled('CD_COORDENADOR', undefined)" config="{&quot;nrSeqDicObjeto&quot;:1047005,&quot;label&quot;:&quot;Coordenador&quot;,&quot;nmAtributo&quot;:&quot;CD_COORDENADOR&quot;,&quot;nrSeqLocalizador&quot;:0,&quot;ieType&quot;:&quot;tbloc&quot;,&quot;ieRestringeEstab&quot;:false,&quot;ieRestringeEmpresa&quot;:false,&quot;numeric&quot;:false,&quot;nameExternalLocatorForm&quot;:&quot;corpesfz&quot;,&quot;nameFieldResultExternalLocator&quot;:&quot;CD_PESSOA_FISICA&quot;,&quot;codeFunctionExternalLocator&quot;:-2,&quot;multiselect&quot;:false,&quot;functionDescription&quot;:&quot;Localizar Pessoas&quot;,&quot;ehrLocatorSQLEnabled&quot;:false}" data-testid="CD_COORDENADOR" class="ng-scope ng-isolate-scope"><div class="textbox-locator textbox-locator-container textbox-locator__enable-focus" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="-1" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+l&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]">
+  <div class="has-text-box enable" style="width:100%;">
+    
+      <div class="textbox-locator textbox-locator-code-container span2" ng-class="{'ng-invalid-custom-function': noResultSearch &amp;&amp; !config.multiselect}">
+        <tasy-wtextbox w-onload="onTextboxLoad($handler)" w-model="value" w-onkeypress="onKeyPress($event)" w-onfocus="!isReadOnly() &amp;&amp; handler.events.onFocus.fireEvent($event)" w-onchange="onChange($event.newValue, $event.oldValue)" w-onblur=" fireOnBlur($event)" is-inside-locator="true" desc="desc" data-touch="false" class="ng-isolate-scope"><div title="" class="text-box-container">
+  <div class="text-box-wrapper">
+    <input class="gwt-TextBox  ng-valid ng-valid-required ng-pristine ng-untouched" only-numbers="false" name="CD_COORDENADOR" width="px" ng-model="value" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+y&quot;,&quot;callback&quot;:wTextboxVM.doRedo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+z&quot;,&quot;callback&quot;:wTextboxVM.doUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" ng-required="isRequired()" w-validator="" w-mask="" ng-trim="false" autocomplete="off" onfocus="this.select();" aria-readonly="false" aria-required="false" aria-disabled="false" maxlength="999999" nmatributo="CD_COORDENADOR" tipoatributo="VISUAL">
+    <span class="span-with-warning ng-hide"></span>
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="">
+  </div>
+  <!-- ngIf: ::unitOfMeasurement -->
+</div>
+</tasy-wtextbox>
+      </div>
+
+      <div class="textbox-locator-description textbox-locator-description-container span10">
+        <input type="text" class="gwt-TextBox disable ng-pristine ng-untouched ng-valid" name="txDescription" ng-model="description" disabled="disabled" readonly="readonly" autocomplete="off">
+      </div>
+
+        <!-- ngIf: config.multiselect && hasMore -->
+
+      <input type="button" class="has-locator input-open-locator" tabindex="-1">
+
+  </div>
+
+  <button type="button" class="btn-save-add ng-binding" style="padding: 8px 0px 0px; display: none;">Adicionar outro</button>
+
+  <tasy-wstandardlocator w-standard-locator-handler="handlerStandardLocator" w-onfilterload="onStandardLocatorFilterLoad()" class="ng-isolate-scope"><div style="width: 100%;">
+</div>
+</tasy-wstandardlocator>
+</div>
+</tasy-wtextboxlocator></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['CD_GERENTE_PROJETO']" w-component-handler="handlersComponent['CD_GERENTE_PROJETO']" w-attr-name="CD_GERENTE_PROJETO" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_y9kasba2t9">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Gerente de Projeto" id="label_y9kasba2t9"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Gerente de Projeto</span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wtextboxlocator w-model="record['CD_GERENTE_PROJETO']" ng-model-options="{ linkedData: undefined }" w-onload="loadHandlerComponent($handler, &quot;CD_GERENTE_PROJETO&quot;, &quot;undefined&quot;)" w-onchange="openLocatorChanged($handler, $event)" w-onselect="onLocatorSelect($handler, $event)" w-params="record" w-externalmetaatributos="detailMetaData.allAttributes" w-ondisableautofilled="onDisableAutoFilled('CD_GERENTE_PROJETO', undefined)" config="{&quot;nrSeqDicObjeto&quot;:1047007,&quot;label&quot;:&quot;Gerente de Projeto&quot;,&quot;nmAtributo&quot;:&quot;CD_GERENTE_PROJETO&quot;,&quot;nrSeqLocalizador&quot;:0,&quot;ieType&quot;:&quot;tbloc&quot;,&quot;ieRestringeEstab&quot;:false,&quot;ieRestringeEmpresa&quot;:false,&quot;numeric&quot;:false,&quot;nameExternalLocatorForm&quot;:&quot;corpesfz&quot;,&quot;nameFieldResultExternalLocator&quot;:&quot;CD_PESSOA_FISICA&quot;,&quot;codeFunctionExternalLocator&quot;:-2,&quot;multiselect&quot;:false,&quot;functionDescription&quot;:&quot;Localizar Pessoas&quot;,&quot;ehrLocatorSQLEnabled&quot;:false}" data-testid="CD_GERENTE_PROJETO" class="ng-scope ng-isolate-scope"><div class="textbox-locator textbox-locator-container textbox-locator__enable-focus" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="-1" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+l&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:openSelectionLocatorIcon,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]">
+  <div class="has-text-box enable" style="width:100%;">
+    
+      <div class="textbox-locator textbox-locator-code-container span2" ng-class="{'ng-invalid-custom-function': noResultSearch &amp;&amp; !config.multiselect}">
+        <tasy-wtextbox w-onload="onTextboxLoad($handler)" w-model="value" w-onkeypress="onKeyPress($event)" w-onfocus="!isReadOnly() &amp;&amp; handler.events.onFocus.fireEvent($event)" w-onchange="onChange($event.newValue, $event.oldValue)" w-onblur=" fireOnBlur($event)" is-inside-locator="true" desc="desc" data-touch="false" class="ng-isolate-scope"><div title="" class="text-box-container">
+  <div class="text-box-wrapper">
+    <input class="gwt-TextBox  ng-valid ng-valid-required ng-pristine ng-untouched" only-numbers="false" name="CD_GERENTE_PROJETO" width="px" ng-model="value" w-hotkey="[{&quot;combo&quot;:&quot;ctrl+y&quot;,&quot;callback&quot;:wTextboxVM.doRedo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+z&quot;,&quot;callback&quot;:wTextboxVM.doUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" ng-required="isRequired()" w-validator="" w-mask="" ng-trim="false" autocomplete="off" onfocus="this.select();" aria-readonly="false" aria-required="false" aria-disabled="false" maxlength="999999" nmatributo="CD_GERENTE_PROJETO" tipoatributo="VISUAL">
+    <span class="span-with-warning ng-hide"></span>
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="">
+  </div>
+  <!-- ngIf: ::unitOfMeasurement -->
+</div>
+</tasy-wtextbox>
+      </div>
+
+      <div class="textbox-locator-description textbox-locator-description-container span10">
+        <input type="text" class="gwt-TextBox disable ng-pristine ng-untouched ng-valid" name="txDescription" ng-model="description" disabled="disabled" readonly="readonly" autocomplete="off">
+      </div>
+
+        <!-- ngIf: config.multiselect && hasMore -->
+
+      <input type="button" class="has-locator input-open-locator" tabindex="-1">
+
+  </div>
+
+  <button type="button" class="btn-save-add ng-binding" style="padding: 8px 0px 0px; display: none;">Adicionar outro</button>
+
+  <tasy-wstandardlocator w-standard-locator-handler="handlerStandardLocator" w-onfilterload="onStandardLocatorFilterLoad()" class="ng-isolate-scope"><div style="width: 100%;">
+</div>
+</tasy-wstandardlocator>
+</div>
+</tasy-wtextboxlocator></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['UF_WDBLCB']" w-component-handler="handlersComponent['UF_WDBLCB']" w-attr-name="UF_WDBLCB" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_f6jzpl6oid">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="UF" id="label_f6jzpl6oid"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">UF</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['UF_WDBLCB']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;UF_WDBLCB&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('UF_WDBLCB', undefined)" data-testid="UF_WDBLCB" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="0" role="combobox" aria-disabled="false" aria-readonly="false" aria-required="false" aria-labelledby="label_f6jzpl6oid">
+    <input name="UF_WDBLCB" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" readonly="readonly">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['NR_SEQ_CANAL']" w-component-handler="handlersComponent['NR_SEQ_CANAL']" w-attr-name="NR_SEQ_CANAL" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_7z6xnvrohy">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Canal" id="label_7z6xnvrohy"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Canal</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['NR_SEQ_CANAL']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;NR_SEQ_CANAL&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('NR_SEQ_CANAL', undefined)" data-testid="NR_SEQ_CANAL" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="0" role="combobox" aria-disabled="false" aria-readonly="false" aria-required="false" aria-labelledby="label_7z6xnvrohy">
+    <input name="NR_SEQ_CANAL" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" readonly="readonly">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['NR_SEQ_FORMA_CONT']" w-component-handler="handlersComponent['NR_SEQ_FORMA_CONT']" w-attr-name="NR_SEQ_FORMA_CONT" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_2e983whdsm">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Forma contrato" id="label_2e983whdsm"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Forma contrato</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['NR_SEQ_FORMA_CONT']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;NR_SEQ_FORMA_CONT&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('NR_SEQ_FORMA_CONT', undefined)" data-testid="NR_SEQ_FORMA_CONT" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="0" role="combobox" aria-disabled="false" aria-readonly="false" aria-required="false" aria-labelledby="label_2e983whdsm">
+    <input name="NR_SEQ_FORMA_CONT" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" readonly="readonly">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['NR_SEQ_CLASSIF']" w-component-handler="handlersComponent['NR_SEQ_CLASSIF']" w-attr-name="NR_SEQ_CLASSIF" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_yjpitqyubr">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Classificação" id="label_yjpitqyubr"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Classificação</span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['NR_SEQ_CLASSIF']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;NR_SEQ_CLASSIF&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('NR_SEQ_CLASSIF', undefined)" data-testid="NR_SEQ_CLASSIF" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="0" role="combobox" aria-disabled="false" aria-readonly="false" aria-required="false" aria-labelledby="label_yjpitqyubr">
+    <input name="NR_SEQ_CLASSIF" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" readonly="readonly">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['IE_STATUS']" w-component-handler="handlersComponent['IE_STATUS']" w-attr-name="IE_STATUS" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_cr8isb70mc">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Status projeto" id="label_cr8isb70mc"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Status projeto</span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['IE_STATUS']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;IE_STATUS&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('IE_STATUS', undefined)" data-testid="IE_STATUS" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="0" role="combobox" aria-disabled="false" aria-readonly="false" aria-required="false" aria-labelledby="label_cr8isb70mc">
+    <input name="IE_STATUS" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" readonly="readonly">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['NR_SEQ_ORIGEM_PROJ']" w-component-handler="handlersComponent['NR_SEQ_ORIGEM_PROJ']" w-attr-name="NR_SEQ_ORIGEM_PROJ" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_t5etnokv48">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="Origem projeto" id="label_t5etnokv48"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Origem projeto</span>
+    <div class="attribute-schematics-contextual-help" style="display: none;"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['NR_SEQ_ORIGEM_PROJ']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;NR_SEQ_ORIGEM_PROJ&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('NR_SEQ_ORIGEM_PROJ', undefined)" data-testid="NR_SEQ_ORIGEM_PROJ" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown readonly disabled" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="-1" role="combobox" aria-disabled="true" aria-readonly="false" aria-required="false" aria-labelledby="label_t5etnokv48">
+    <input name="NR_SEQ_ORIGEM_PROJ" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['DT_INICIO_WDTP']" w-component-handler="handlersComponent['DT_INICIO_WDTP']" w-attr-name="DT_INICIO_WDTP" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_u4ld9gbjgm">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="De" id="label_u4ld9gbjgm"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">De</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wdatetimepicker ng-model="record['DT_INICIO_WDTP']" record="record" ng-model-options="{ linkedData: undefined }" handler="handlers['DT_INICIO_WDTP']" w-onload="loadHandlerComponent($handler, &quot;DT_INICIO_WDTP&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('DT_INICIO_WDTP', undefined)" w-mode="DATE" w-onresize="onResize($handler, $event)" w-additionals="TODAY" data-testid="DT_INICIO_WDTP" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-valid-invalid-date"><!-- ngIf: rangeMode === 'true' -->
+<!-- ngIf: rangeMode !== 'true' --><div class="w-dt-result ng-scope" ng-class="{'is-spinner' : isSpinner}" ng-if="rangeMode !== 'true'">
+  <!-- ngIf: !isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.WEEK_PICKER_BOX]) --><div class="w-dt-result__ctnr datetimepicker-container ng-scope" ng-class="{'is-invalid': isInvalid(),
+  'is-focused': inputFocused || pickerVisible,
+  'is-disabled': isDisabled() || isReadOnly() || internalReadOnly,
+  'ng-invalid-required': isInvalidRequired()}" ng-if="!isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.WEEK_PICKER_BOX])" role="presentation">
+    <span class=""></span>
+    <div class="w-dt-result__txtbox w-dt-result__txtbox--date w-container-input" role="presentation">
+      <!-- ngIf: isSpinner -->
+      <input class="w-dt-result__input ng-pristine ng-untouched ng-valid ng-valid-mask ng-valid-required" ng-show="::!isSensitive()" ng-class="{'is-invalid': isInvalid()}" type="text" name="DT_INICIO_WDTP" w-hotkey="[{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:wDateTimePickerVM.onEnter,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:wDateTimePickerVM.updateModel,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+s&quot;,&quot;callback&quot;:wDateTimePickerVM.updateModel,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;right&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowRight,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;left&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowLeft,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;down&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowDown,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;up&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowUp,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+y&quot;,&quot;callback&quot;:wDateTimePickerVM.doReUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+z&quot;,&quot;callback&quot;:wDateTimePickerVM.doUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;esc&quot;,&quot;callback&quot;:wDateTimePickerVM.doEsc,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false}]" ng-model="input.dateValue" ng-blur="inputBlur($event)" ng-focus="inputFocus($event)" ng-keypress="keypress($event)" onfocus="this.select();" ng-disabled="isDisabled() || internalReadOnly" ng-readonly="isInputReadOnly()" ui-mask="99/99/9999" ui-mask-placeholder-char="_" ui-mask-placeholder="" ui-options="maskOptions" placeholder="DD/MM/YYYY" ng-required="isRequired()" dir="ltr" tabindex="0" ng-mouseover="isInvalid() &amp;&amp; showWarningTooltip($event)" ng-mouseout="hideWarningTooltip()" ng-attr-aria-labelledby="{{isSpinner ? undefined : handler.ariaHandler.getLabelId()}}" role="textbox" aria-labelledby="label_u4ld9gbjgm" aria-readonly="false" aria-required="false" aria-disabled="false">
+      
+      <!-- ngIf: showTimeZone() -->
+      <!-- ngIf: isSpinner -->
+    </div>
+
+    <!-- ngIf: isMode(DateTimePickerOptions.MODE.DATE_TIME_SPINNER) -->
+  </div><!-- end ngIf: !isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.WEEK_PICKER_BOX]) -->
+
+  <button type="button" class="w-dt-result__button is_dpkr" ng-class="{
+      'is_dpkr': isMode([
+        DateTimePickerOptions.MODE.DATE,
+        DateTimePickerOptions.MODE.MONTH,
+        DateTimePickerOptions.MODE.YEAR,
+        DateTimePickerOptions.MODE.DATE_SPINNER
+      ]),
+      'is_dtpkr': isMode([
+        DateTimePickerOptions.MODE.DATE_TIME,
+        DateTimePickerOptions.MODE.DATE_TIME_SHORT,
+        DateTimePickerOptions.MODE.DATE_TIME_SPINNER,
+        DateTimePickerOptions.MODE.DATE_TIME_SHORT_SPINNER,
+      ]),
+      'is_tpkr': isMode([
+        DateTimePickerOptions.MODE.TIME,
+        DateTimePickerOptions.MODE.MEDIUM_TIME
+      ]),
+      'is_dpkb': isMode([
+        DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+        DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+        DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+        DateTimePickerOptions.MODE.WEEK_PICKER_BOX
+      ]),
+      'is_dpkb_visible': isMode([
+        DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+        DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+        DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+        DateTimePickerOptions.MODE.WEEK_PICKER_BOX
+      ]) &amp;&amp; pickerVisible,
+      'is-invalid': isInvalid(),
+      'is-focused': inputFocused || pickerVisible,
+      'ng-invalid-required': isInvalidRequired()
+    }" tabindex="-1" ng-blur="inputBlur($event)" ng-click="handler.togglePicker()" ng-disabled="isDisabled() || internalReadOnly" ng-readonly="isReadOnly() || internalReadOnly" aria-label="Choose a date" aria-readonly="false" aria-disabled="false" aria-expanded="false">
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX]) -->
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.WEEK_PICKER_BOX]) -->
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.MONTH_PICKER_BOX]) -->
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.YEAR_PICKER_BOX]) -->
+  </button>
+</div><!-- end ngIf: rangeMode !== 'true' -->
+</tasy-wdatetimepicker></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['DT_FIM_WDTP']" w-component-handler="handlersComponent['DT_FIM_WDTP']" w-attr-name="DT_FIM_WDTP" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_971u3frpsm">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="até" id="label_971u3frpsm"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">até</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wdatetimepicker ng-model="record['DT_FIM_WDTP']" record="record" ng-model-options="{ linkedData: undefined }" handler="handlers['DT_FIM_WDTP']" w-onload="loadHandlerComponent($handler, &quot;DT_FIM_WDTP&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('DT_FIM_WDTP', undefined)" w-mode="DATE" w-onresize="onResize($handler, $event)" w-additionals="TODAY" data-testid="DT_FIM_WDTP" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-valid-invalid-date"><!-- ngIf: rangeMode === 'true' -->
+<!-- ngIf: rangeMode !== 'true' --><div class="w-dt-result ng-scope" ng-class="{'is-spinner' : isSpinner}" ng-if="rangeMode !== 'true'">
+  <!-- ngIf: !isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.WEEK_PICKER_BOX]) --><div class="w-dt-result__ctnr datetimepicker-container ng-scope" ng-class="{'is-invalid': isInvalid(),
+  'is-focused': inputFocused || pickerVisible,
+  'is-disabled': isDisabled() || isReadOnly() || internalReadOnly,
+  'ng-invalid-required': isInvalidRequired()}" ng-if="!isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.WEEK_PICKER_BOX])" role="presentation">
+    <span class=""></span>
+    <div class="w-dt-result__txtbox w-dt-result__txtbox--date w-container-input" role="presentation">
+      <!-- ngIf: isSpinner -->
+      <input class="w-dt-result__input ng-pristine ng-untouched ng-valid ng-valid-mask ng-valid-required" ng-show="::!isSensitive()" ng-class="{'is-invalid': isInvalid()}" type="text" name="DT_FIM_WDTP" w-hotkey="[{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:wDateTimePickerVM.onEnter,&quot;type&quot;:&quot;keyup&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;enter&quot;,&quot;callback&quot;:wDateTimePickerVM.updateModel,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+s&quot;,&quot;callback&quot;:wDateTimePickerVM.updateModel,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;right&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowRight,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;left&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowLeft,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;down&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowDown,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;up&quot;,&quot;callback&quot;:wDateTimePickerVM.onArrowUp,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+y&quot;,&quot;callback&quot;:wDateTimePickerVM.doReUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;ctrl+z&quot;,&quot;callback&quot;:wDateTimePickerVM.doUndo,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false},{&quot;combo&quot;:&quot;esc&quot;,&quot;callback&quot;:wDateTimePickerVM.doEsc,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:true,&quot;disableOnInput&quot;:false}]" ng-model="input.dateValue" ng-blur="inputBlur($event)" ng-focus="inputFocus($event)" ng-keypress="keypress($event)" onfocus="this.select();" ng-disabled="isDisabled() || internalReadOnly" ng-readonly="isInputReadOnly()" ui-mask="99/99/9999" ui-mask-placeholder-char="_" ui-mask-placeholder="" ui-options="maskOptions" placeholder="DD/MM/YYYY" ng-required="isRequired()" dir="ltr" tabindex="0" ng-mouseover="isInvalid() &amp;&amp; showWarningTooltip($event)" ng-mouseout="hideWarningTooltip()" ng-attr-aria-labelledby="{{isSpinner ? undefined : handler.ariaHandler.getLabelId()}}" role="textbox" aria-labelledby="label_971u3frpsm" aria-readonly="false" aria-required="false" aria-disabled="false">
+      
+      <!-- ngIf: showTimeZone() -->
+      <!-- ngIf: isSpinner -->
+    </div>
+
+    <!-- ngIf: isMode(DateTimePickerOptions.MODE.DATE_TIME_SPINNER) -->
+  </div><!-- end ngIf: !isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+                                                                DateTimePickerOptions.MODE.WEEK_PICKER_BOX]) -->
+
+  <button type="button" class="w-dt-result__button is_dpkr" ng-class="{
+      'is_dpkr': isMode([
+        DateTimePickerOptions.MODE.DATE,
+        DateTimePickerOptions.MODE.MONTH,
+        DateTimePickerOptions.MODE.YEAR,
+        DateTimePickerOptions.MODE.DATE_SPINNER
+      ]),
+      'is_dtpkr': isMode([
+        DateTimePickerOptions.MODE.DATE_TIME,
+        DateTimePickerOptions.MODE.DATE_TIME_SHORT,
+        DateTimePickerOptions.MODE.DATE_TIME_SPINNER,
+        DateTimePickerOptions.MODE.DATE_TIME_SHORT_SPINNER,
+      ]),
+      'is_tpkr': isMode([
+        DateTimePickerOptions.MODE.TIME,
+        DateTimePickerOptions.MODE.MEDIUM_TIME
+      ]),
+      'is_dpkb': isMode([
+        DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+        DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+        DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+        DateTimePickerOptions.MODE.WEEK_PICKER_BOX
+      ]),
+      'is_dpkb_visible': isMode([
+        DateTimePickerOptions.MODE.DATE_PICKER_BOX,
+        DateTimePickerOptions.MODE.MONTH_PICKER_BOX,
+        DateTimePickerOptions.MODE.YEAR_PICKER_BOX,
+        DateTimePickerOptions.MODE.WEEK_PICKER_BOX
+      ]) &amp;&amp; pickerVisible,
+      'is-invalid': isInvalid(),
+      'is-focused': inputFocused || pickerVisible,
+      'ng-invalid-required': isInvalidRequired()
+    }" tabindex="-1" ng-blur="inputBlur($event)" ng-click="handler.togglePicker()" ng-disabled="isDisabled() || internalReadOnly" ng-readonly="isReadOnly() || internalReadOnly" aria-label="Choose a date" aria-readonly="false" aria-disabled="false" aria-expanded="false">
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.DATE_PICKER_BOX]) -->
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.WEEK_PICKER_BOX]) -->
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.MONTH_PICKER_BOX]) -->
+    <!-- ngIf: isMode([DateTimePickerOptions.MODE.YEAR_PICKER_BOX]) -->
+  </button>
+</div><!-- end ngIf: rangeMode !== 'true' -->
+</tasy-wdatetimepicker></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['NR_SEQ_PAIS']" w-component-handler="handlersComponent['NR_SEQ_PAIS']" w-attr-name="NR_SEQ_PAIS" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_y83bdlcy68">
+  <div class="w-attr-container__label">
+    <label aria-hidden="true" aria-label="País" id="label_y83bdlcy68"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">País</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-listbox w-model="record['NR_SEQ_PAIS']" ng-model-options="{ linkedData: undefined }" type="NONE" w-onload="loadHandlerComponent($handler, &quot;NR_SEQ_PAIS&quot;, &quot;undefined&quot;)" w-dark-skin="$parent.darkSkin" w-ondisableautofilled="onDisableAutoFilled('NR_SEQ_PAIS', undefined)" data-testid="NR_SEQ_PAIS" class="ng-scope ng-isolate-scope"><w-loader size="small" type="spinner" align="center" show-message="loadingMessage" style="position: absolute; z-index: 99999; padding-top: 6px; width: 100%;display:none;" xmlns="http://www.w3.org/1999/html" class="ng-isolate-scope w-loader--center"><div class="w-loader-spinner-type" style="">
+  <div class="w-loader w-loader--spinner w-loader--small w-loader--blue" style="display: none;"></div>
+  <span class="w-loader__msg ng-binding ng-hide" ng-show="showMessage" style="display: none;"></span>
+</div>
+
+<div class="w-loader-linear-type" style="display:none">
+  <label class="w-loader-linear ng-binding" style="display: none;">0% Carregando </label>
+  <div class="w-loader-progress" style="display: none;">
+    <div class="progress">
+      <div class="progress-bar active" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-linear-gradient" style="display:none">
+  <div class="progress-bar-linear-gradient"><div style="width: 0%;"></div></div>
+  <div class="subtitle-linear-gradient"></div>
+</div>
+</w-loader>
+<div class="w-listbox w-listbox-dropdown" ng-keydown="onKeydown($event)" ng-keyup="onKeyup($event)" ng-class="{'ng-invalid ng-invalid-required': !isValid()}" tabindex="0" role="combobox" aria-disabled="false" aria-readonly="false" aria-required="false" aria-labelledby="label_y83bdlcy68">
+    <input name="NR_SEQ_PAIS" type="hidden" tabindex="-1" ng-model="internalValue" w-validator="" class="ng-pristine ng-untouched ng-valid" readonly="readonly">
+
+    <img class="infoicon_img" tooltip-append-to-body="true" tooltip-placement="auto top" uib-tooltip="" tabindex="-1">
+
+    <!-- ngIf: !openSelection && !search --><div class="w-listbox__label truncate ng-scope" tabindex="-1" ng-if="!openSelection &amp;&amp; !search">
+      <!-- ngIf: showAllOptionIcon -->
+
+      <!-- ngIf: isUseFilter -->
+
+      <!-- ngIf: !isUseFilter --><a class="truncate ng-scope" ng-if="!isUseFilter" ng-mouseover="onMouseOver($event, true)" ng-mouseleave="WTooltipService.hideTooltip()" tabindex="-1">
+
+        <!-- ngInclude: undefined --><ng-include src="handler.getSelectedTemplate()" class="ng-scope"><!-- ngIf: isMultiSelection() -->
+
+<!-- ngIf: !isMultiSelection() --><span ng-if="!isMultiSelection()" class="ng-binding ng-scope">---</span><!-- end ngIf: !isMultiSelection() -->
+</ng-include>
+
+      </a><!-- end ngIf: !isUseFilter -->
+    </div><!-- end ngIf: !openSelection && !search -->
+
+    <!-- ngIf: !openSelection && search -->
+
+    <!-- ngIf: openSelection -->
+</div>
+</tasy-listbox></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12 w-attr-container__label--radio-line-break" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['TIPO_DATA_WJRB']" w-component-handler="handlersComponent['TIPO_DATA_WJRB']" w-attr-name="TIPO_DATA_WJRB" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_l93w1kxbbb">
+  <div class="w-attr-container__label w-attr-container__label--radio">
+    <label aria-hidden="true" aria-label="Tipo data" id="label_l93w1kxbbb"></label>
+    <span class="truncate " id="label-content" aria-hidden="true">Tipo data</span>
+    <div class="attribute-schematics-contextual-help"><schematics-contextual-help></schematics-contextual-help></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content" ng-transclude=""><tasy-wradiobuttongroup w-model="record['TIPO_DATA_WJRB']" ng-model-options="{ linkedData: undefined }" handler="handlers['TIPO_DATA_WJRB']" w-onload="loadHandlerComponent($handler, &quot;TIPO_DATA_WJRB&quot;, &quot;undefined&quot;)" w-ondisableautofilled="onDisableAutoFilled('TIPO_DATA_WJRB', undefined)" data-testid="TIPO_DATA_WJRB" class="ng-scope ng-isolate-scope"><div class="tasy-group-box border-box" role="radiogroup" aria-readonly="false" aria-disabled="false" aria-required="false" aria-labelledby="label_l93w1kxbbb" aria-activedescendant="0">
+  <input id="radioval_TIPO_DATA_WJRB" name="TIPO_DATA_WJRB" type="hidden" ng-model="value" class="ng-pristine ng-untouched ng-valid enable">
+  <!-- ngRepeat: objeto in objetos --><div class="group-box-container ng-scope" ng-repeat="objeto in objetos">
+    <!-- ngRepeat: button in objeto.buttons --><div class="group-box-column ng-scope" style="width: 50%" ng-repeat="button in objeto.buttons">
+      <span class="gwt-RadioButton" uib-tooltip="" ng-disabled="isDisabledValue(button.cd)" id="0" role="radio" aria-labelledby="label_wid_22" aria-checked="false" tabindex="0">
+        <!-- ngIf: sensitive -->
+        <!-- ngIf: !sensitive --><div ng-if="!sensitive" class="ng-scope">
+          <input id="wid_22" type="radio" ng-click="!(readOnly || internalReadOnly) &amp;&amp; DOMHandler.changeValue(button.cd, value, true, button)" ng-focus="!(readOnly || internalReadOnly) &amp;&amp; handler.events.onFocus.fireEvent($event)" ng-blur="onItemBlur($event)" name="radio_TIPO_DATA_WJRB" value="0" hidden="" class="enable">
+            <label for="wid_22" id="label_wid_22" aria-label="Nenhum" tabindex="-1">
+              <div class="truncate rg-label ng-binding" tooltip-append-to-body="true" uib-tooltip="" ng-mouseover="showToolTipIfHasElipsis($event, button)">
+                Nenhum
+              </div>
+            </label>
+        </div><!-- end ngIf: !sensitive -->
+      </span>
+    </div><!-- end ngRepeat: button in objeto.buttons --><div class="group-box-column ng-scope" style="width: 50%" ng-repeat="button in objeto.buttons">
+      <span class="gwt-RadioButton" uib-tooltip="" ng-disabled="isDisabledValue(button.cd)" id="3" role="radio" aria-labelledby="label_wid_23" aria-checked="false" tabindex="0">
+        <!-- ngIf: sensitive -->
+        <!-- ngIf: !sensitive --><div ng-if="!sensitive" class="ng-scope">
+          <input id="wid_23" type="radio" ng-click="!(readOnly || internalReadOnly) &amp;&amp; DOMHandler.changeValue(button.cd, value, true, button)" ng-focus="!(readOnly || internalReadOnly) &amp;&amp; handler.events.onFocus.fireEvent($event)" ng-blur="onItemBlur($event)" name="radio_TIPO_DATA_WJRB" value="3" hidden="" class="enable">
+            <label for="wid_23" id="label_wid_23" aria-label="Data início real" tabindex="-1">
+              <div class="truncate rg-label ng-binding" tooltip-append-to-body="true" uib-tooltip="" ng-mouseover="showToolTipIfHasElipsis($event, button)">
+                Data início real
+              </div>
+            </label>
+        </div><!-- end ngIf: !sensitive -->
+      </span>
+    </div><!-- end ngRepeat: button in objeto.buttons -->
+  </div><!-- end ngRepeat: objeto in objetos --><div class="group-box-container ng-scope" ng-repeat="objeto in objetos">
+    <!-- ngRepeat: button in objeto.buttons --><div class="group-box-column ng-scope" style="width: 50%" ng-repeat="button in objeto.buttons">
+      <span class="gwt-RadioButton" uib-tooltip="" ng-disabled="isDisabledValue(button.cd)" id="1" role="radio" aria-labelledby="label_wid_24" aria-checked="false" tabindex="0">
+        <!-- ngIf: sensitive -->
+        <!-- ngIf: !sensitive --><div ng-if="!sensitive" class="ng-scope">
+          <input id="wid_24" type="radio" ng-click="!(readOnly || internalReadOnly) &amp;&amp; DOMHandler.changeValue(button.cd, value, true, button)" ng-focus="!(readOnly || internalReadOnly) &amp;&amp; handler.events.onFocus.fireEvent($event)" ng-blur="onItemBlur($event)" name="radio_TIPO_DATA_WJRB" value="1" hidden="" class="enable">
+            <label for="wid_24" id="label_wid_24" aria-label="Data início previsto" tabindex="-1">
+              <div class="truncate rg-label ng-binding" tooltip-append-to-body="true" uib-tooltip="" ng-mouseover="showToolTipIfHasElipsis($event, button)">
+                Data início previsto
+              </div>
+            </label>
+        </div><!-- end ngIf: !sensitive -->
+      </span>
+    </div><!-- end ngRepeat: button in objeto.buttons --><div class="group-box-column ng-scope" style="width: 50%" ng-repeat="button in objeto.buttons">
+      <span class="gwt-RadioButton" uib-tooltip="" ng-disabled="isDisabledValue(button.cd)" id="4" role="radio" aria-labelledby="label_wid_25" aria-checked="false" tabindex="0">
+        <!-- ngIf: sensitive -->
+        <!-- ngIf: !sensitive --><div ng-if="!sensitive" class="ng-scope">
+          <input id="wid_25" type="radio" ng-click="!(readOnly || internalReadOnly) &amp;&amp; DOMHandler.changeValue(button.cd, value, true, button)" ng-focus="!(readOnly || internalReadOnly) &amp;&amp; handler.events.onFocus.fireEvent($event)" ng-blur="onItemBlur($event)" name="radio_TIPO_DATA_WJRB" value="4" hidden="" class="enable">
+            <label for="wid_25" id="label_wid_25" aria-label="Data fim real" tabindex="-1">
+              <div class="truncate rg-label ng-binding" tooltip-append-to-body="true" uib-tooltip="" ng-mouseover="showToolTipIfHasElipsis($event, button)">
+                Data fim real
+              </div>
+            </label>
+        </div><!-- end ngIf: !sensitive -->
+      </span>
+    </div><!-- end ngRepeat: button in objeto.buttons -->
+  </div><!-- end ngRepeat: objeto in objetos --><div class="group-box-container ng-scope" ng-repeat="objeto in objetos">
+    <!-- ngRepeat: button in objeto.buttons --><div class="group-box-column ng-scope" style="width: 50%" ng-repeat="button in objeto.buttons">
+      <span class="gwt-RadioButton" uib-tooltip="" ng-disabled="isDisabledValue(button.cd)" id="2" role="radio" aria-labelledby="label_wid_26" aria-checked="false" tabindex="0">
+        <!-- ngIf: sensitive -->
+        <!-- ngIf: !sensitive --><div ng-if="!sensitive" class="ng-scope">
+          <input id="wid_26" type="radio" ng-click="!(readOnly || internalReadOnly) &amp;&amp; DOMHandler.changeValue(button.cd, value, true, button)" ng-focus="!(readOnly || internalReadOnly) &amp;&amp; handler.events.onFocus.fireEvent($event)" ng-blur="onItemBlur($event)" name="radio_TIPO_DATA_WJRB" value="2" hidden="" class="enable">
+            <label for="wid_26" id="label_wid_26" aria-label="Data fim previsto" tabindex="-1">
+              <div class="truncate rg-label ng-binding" tooltip-append-to-body="true" uib-tooltip="" ng-mouseover="showToolTipIfHasElipsis($event, button)">
+                Data fim previsto
+              </div>
+            </label>
+        </div><!-- end ngIf: !sensitive -->
+      </span>
+    </div><!-- end ngRepeat: button in objeto.buttons -->
+  </div><!-- end ngRepeat: objeto in objetos -->
+</div>
+</tasy-wradiobuttongroup></div>
+  <div class="attribute-schematics-contextual-help-inline"></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><div class="w-form__row"><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['IE_SOMENTE_ATIVOS']" w-component-handler="handlersComponent['IE_SOMENTE_ATIVOS']" w-attr-name="IE_SOMENTE_ATIVOS" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_93ys5rnptz">
+  <div class="w-attr-container__label ng-hide">
+    <label aria-hidden="true"></label>
+    <span class="truncate " id="label-content" aria-hidden="true"></span>
+    <div class="attribute-schematics-contextual-help"></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content inline" ng-transclude=""><div class="wcheckbox default-border ng-isolate-scope" w-model="record['IE_SOMENTE_ATIVOS']" w-onclick="handlersComponent['IE_SOMENTE_ATIVOS'].check(!record['IE_SOMENTE_ATIVOS'])" ng-model-options="{ linkedData: undefined }" handler="handlers['IE_SOMENTE_ATIVOS']" w-onload="loadHandlerComponent($handler, &quot;IE_SOMENTE_ATIVOS&quot;, &quot;undefined&quot;)" shows-info="$parent.showsInfo(true)" data-testid="IE_SOMENTE_ATIVOS">
+    <div class="wcheckbox-div enable" style="flex-direction: initial !important; display: flex; min-height: 30px;" tabindex="0" role="checkbox" aria-readonly="false" aria-required="false" aria-disabled="false" aria-checked="false" aria-labelledby="label_93ys5rnptz">
+        <div class="checkboxStyleAngular checkbox-container">
+            <input type="checkbox" value="true" id="wid_27" name="IE_SOMENTE_ATIVOS" ng-model="internalValue" no-dirty="noDirty" w-validator="" tabindex="-1" hidden="" class="ng-pristine ng-untouched ng-valid ng-valid-required">
+            <label class="wcheckbox-inputlabel" for="wid_27" aria-labelledby="label_93ys5rnptz"></label>
+        </div>
+        <label class="wcheckbox-main-label ng-pristine ng-untouched ng-valid" ng-model="internalValue" id="label_93ys5rnptz">
+            <div id="cbToolTip" class="gwt-Label wcheckbox-label truncate">Somente projetos ativos</div>
+        </label>
+    </div>
+</div></div>
+  <div class="attribute-schematics-contextual-help-inline"><schematics-contextual-help></schematics-contextual-help></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['IE_SOMENTE_AUDIT']" w-component-handler="handlersComponent['IE_SOMENTE_AUDIT']" w-attr-name="IE_SOMENTE_AUDIT" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_52vek8gcio">
+  <div class="w-attr-container__label ng-hide">
+    <label aria-hidden="true"></label>
+    <span class="truncate " id="label-content" aria-hidden="true"></span>
+    <div class="attribute-schematics-contextual-help"></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content inline" ng-transclude=""><div class="wcheckbox default-border ng-isolate-scope" w-model="record['IE_SOMENTE_AUDIT']" w-onclick="handlersComponent['IE_SOMENTE_AUDIT'].check(!record['IE_SOMENTE_AUDIT'])" ng-model-options="{ linkedData: undefined }" handler="handlers['IE_SOMENTE_AUDIT']" w-onload="loadHandlerComponent($handler, &quot;IE_SOMENTE_AUDIT&quot;, &quot;undefined&quot;)" shows-info="$parent.showsInfo(true)" data-testid="IE_SOMENTE_AUDIT">
+    <div class="wcheckbox-div enable" style="flex-direction: initial !important; display: flex; min-height: 30px;" tabindex="0" role="checkbox" aria-readonly="false" aria-required="false" aria-disabled="false" aria-checked="false" aria-labelledby="label_52vek8gcio">
+        <div class="checkboxStyleAngular checkbox-container">
+            <input type="checkbox" value="true" id="wid_28" name="IE_SOMENTE_AUDIT" ng-model="internalValue" no-dirty="noDirty" w-validator="" tabindex="-1" hidden="" class="ng-pristine ng-untouched ng-valid ng-valid-required">
+            <label class="wcheckbox-inputlabel" for="wid_28" aria-labelledby="label_52vek8gcio"></label>
+        </div>
+        <label class="wcheckbox-main-label ng-pristine ng-untouched ng-valid" ng-model="internalValue" id="label_52vek8gcio">
+            <div id="cbToolTip" class="gwt-Label wcheckbox-label truncate">Somente projetos auditados</div>
+        </label>
+    </div>
+</div></div>
+  <div class="attribute-schematics-contextual-help-inline"><schematics-contextual-help></schematics-contextual-help></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div><div class="w-attr-container ng-isolate-scope span12" w-hotkey="[{&quot;combo&quot;:&quot;shift+f1&quot;,&quot;callback&quot;:openContextualHelpPopoverByHotkey,&quot;type&quot;:&quot;keydown&quot;,&quot;propagate&quot;:false,&quot;disableOnInput&quot;:false}]" role="group" w-handler="containerHandlers['IE_NAO_FILTRAR_PROJ_VINC']" w-component-handler="handlersComponent['IE_NAO_FILTRAR_PROJ_VINC']" w-attr-name="IE_NAO_FILTRAR_PROJ_VINC" w-detail-parent-type="filter" w-dark-skin="darkSkin" style="" aria-labelledby="label_nhovlyk0kk">
+  <div class="w-attr-container__label ng-hide">
+    <label aria-hidden="true"></label>
+    <span class="truncate " id="label-content" aria-hidden="true"></span>
+    <div class="attribute-schematics-contextual-help"></div>
+    <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+    <div class="is-automatic-filled" ng-click="openAutomaticFilled($event)"></div>
+  </div>
+  <div class="w-attr-container__content inline" ng-transclude=""><div class="wcheckbox default-border ng-isolate-scope" w-model="record['IE_NAO_FILTRAR_PROJ_VINC']" w-onclick="handlersComponent['IE_NAO_FILTRAR_PROJ_VINC'].check(!record['IE_NAO_FILTRAR_PROJ_VINC'])" ng-model-options="{ linkedData: undefined }" handler="handlers['IE_NAO_FILTRAR_PROJ_VINC']" w-onload="loadHandlerComponent($handler, &quot;IE_NAO_FILTRAR_PROJ_VINC&quot;, &quot;undefined&quot;)" shows-info="$parent.showsInfo(true)" data-testid="IE_NAO_FILTRAR_PROJ_VINC">
+    <div class="wcheckbox-div enable" style="flex-direction: initial !important; display: flex; min-height: 30px;" tabindex="0" role="checkbox" aria-readonly="false" aria-required="false" aria-disabled="false" aria-checked="false" aria-labelledby="label_nhovlyk0kk">
+        <div class="checkboxStyleAngular checkbox-container">
+            <input type="checkbox" value="true" id="wid_29" name="IE_NAO_FILTRAR_PROJ_VINC" ng-model="internalValue" no-dirty="noDirty" w-validator="" tabindex="-1" hidden="" class="ng-pristine ng-untouched ng-valid ng-valid-required">
+            <label class="wcheckbox-inputlabel" for="wid_29" aria-labelledby="label_nhovlyk0kk"></label>
+        </div>
+        <label class="wcheckbox-main-label ng-pristine ng-untouched ng-valid" ng-model="internalValue" id="label_nhovlyk0kk">
+            <div id="cbToolTip" class="gwt-Label wcheckbox-label truncate">Não filtrar projetos vinculados</div>
+        </label>
+    </div>
+</div></div>
+  <div class="attribute-schematics-contextual-help-inline"><schematics-contextual-help></schematics-contextual-help></div>
+  <img style="display: none" src="/assets/framework/images/components/w-mdetail/Notes.svg" class="observation-highlight">
+</div></div><w-info handler="wInfoHandler" ng-show="shouldDisplayWInfo()" class="ng-isolate-scope ng-hide"><div class="w-info ng-hide" ng-show="internalShow">
+    <span class="w-info__icon"></span>
+    <div>
+      <!-- ngIf: creatorDetail -->
+      <!-- ngIf: modifierDetail -->
+    </div>
+</div>
+</w-info></div></form></div>
+
+</div>
+</tasy-wmdetail>
+
+  <div class="wfilter-advanced ng-hide" ng-show="isAdvancedVisible &amp;&amp; hasAdvancedFilter">
+    <div class="wfilter-advanced-header wfilter-width-full">
+      <tasy-wadvancedfilter w-onload="loadAdvancedFilter($handler)" w-onbeforefilter="onBeforeFilterAdvancedFilter($handler)" w-onbeforeopen="onBeforeOpenAdvancedFilter($handler)" w-onfilter="onFilterAdvancedFilter()" filter-restrictions-output="filterRestrictionsOutput" filter-code="1046181" filter-metadata-file="" feature-code="993" class="ng-isolate-scope"><div id="button-advance-filter" class="waf-button-container" ng-class="{ 'is-mandatory' : mandatory }">
+  <div class="waf-container__label">
+    <span id="advanced-label" class="wfilter-advanced-label ng-binding">Dimensões</span>
+  </div>
+  <div ng-show="hasDimension || showButtons" style="margin-left: auto" class="">
+    <button id="button-open-filter" type="text" class="btn-link-blue w-advanced-filter-link ng-binding" href="javascript:void(0);" ng-click="openFilter()">
+      Filtro avançado
+    </button>
+  </div>
+</div>
+<div class="adv-filter-area column-direction">
+  <tasy-wadvancedfilter-token class="checkout-content-area ng-isolate-scope" w-onload="onLoadAdvancedFilterToken($handler)"><div id="checkout-content" class="checkout-content-border">
+
+  <!-- ngRepeat: dimension in dimensionList track by parentIndex = $index -->
+
+</div>
+</tasy-wadvancedfilter-token>
+</div>
+</tasy-wadvancedfilter>
+    </div>
+  </div>
+
+  <div class="wfilter-bottom" ng-show="visible">
+    <!-- ngIf: saveFiltersVisible --><w-filter-options class="w-filter-bottom-options ng-scope ng-isolate-scope" w-onload="onFilterOptionsLoad($handler)" ng-if="saveFiltersVisible" filter-context="filterOptionsContext" reset-visible="optionsResetButton" clear-visible="isClearButtonVisible" save-visible="isSaveButtonVisible" handler="handler"><div class="w-filter-options" outside-click="hideFilterOptions()">
+  <button class="w-filter-options__button btn-link-blue ng-binding w-filter-options__button--top" ng-class="{ 'w-filter-options__button--top' : filterContext, 'is-inline' : !filterContext }" data-touch="false" ng-click="toggleFilterOptions()">Ações do filtro</button>
+  <ul class="wpopupmenu no-box-shadow ng-hide wpopupmenu--pull-top" id="wpopupmenu" ng-class="{ 'wpopupmenu--pull-top' : filterContext }" ng-show="showFilterOptions">
+    <!-- ngIf: !isViewTokenModel --><li class="wpopupmenu__item ng-hide w-filter-options__save__current ng-scope" ng-if="!isViewTokenModel" ng-click="saveCurrentFilter(); hideFilterOptions()">
+      <div class="wpopupmenu__label ng-binding">Atualizar filtro</div>
+    </li><!-- end ngIf: !isViewTokenModel -->
+    <!-- ngIf: !isViewTokenModel --><li class="wpopupmenu__item ng-hide w-filter-options__save_rename ng-scope" ng-if="!isViewTokenModel" ng-click="renameFilter(); hideFilterOptions()">
+      <div class="wpopupmenu__label ng-binding">Renomear filtro</div>
+    </li><!-- end ngIf: !isViewTokenModel -->
+    <!-- ngIf: saveVisible --><li class="wpopupmenu__item w-filter-options__save ng-scope" ng-click="saveFilter(); hideFilterOptions()" ng-if="saveVisible">
+      <div class="wpopupmenu__label ng-binding">Salvar filtro</div>
+    </li><!-- end ngIf: saveVisible -->
+    <!-- ngIf: isLoadFilterVisible() && !isViewTokenModel -->
+    <!-- ngIf: isLoadFilterVisible() && isViewTokenModel -->
+    <!-- ngIf: resetVisible --><li class="wpopupmenu__item w-filter-options__reset ng-scope" ng-click="resetDefaultFilter(); hideFilterOptions()" ng-if="resetVisible">
+      <div class="wpopupmenu__label ng-binding">Redefinir</div>
+    </li><!-- end ngIf: resetVisible -->
+    <!-- ngIf: clearVisible --><li class="wpopupmenu__item w-filter-options__clearall ng-scope" ng-click="clearFilter(); hideFilterOptions()" ng-if="clearVisible">
+      <div class="wpopupmenu__label ng-binding">Limpar filtros</div>
+    </li><!-- end ngIf: clearVisible -->
+  </ul>
+</div>
+</w-filter-options><!-- end ngIf: saveFiltersVisible -->
+
+    <!-- ngIf: visible --><div ng-if="visible" class="ng-scope">
+      <button class="btn-green wfilter-button ng-binding" data-touch="false" ng-disabled="isButtonDisabled" ng-click="onFilter(true)">
+        Filtrar
+      </button>
+    </div><!-- end ngIf: visible -->
+  </div>
+</div>
