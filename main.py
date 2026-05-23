@@ -3,8 +3,20 @@ import os
 from playwright.sync_api import Page, sync_playwright
 from dotenv import load_dotenv
 from time import sleep
+from datetime import date, datetime
 
 MAIN_URL = "https://tasycorp-vivere.zion-srv.com/#/login"
+
+def formatar_data(data:str)->str:    
+    return datetime.strptime(data,'%d/%m/%Y %H:%M:%S').strftime('%d/%m/%Y %H:%M:%S')
+
+
+def obter_painel(page:Page, wdbpanel:str|int) -> Page:
+    locator = f'[dto-code="{str(wdbpanel)}"]'
+    painel = page.locator(locator)
+    if painel.count() > 0:
+        return painel
+    return page
 
 def aguardar_carregamento(page:Page, locator:str='div.paginationtop'):
     '''
@@ -12,6 +24,21 @@ def aguardar_carregamento(page:Page, locator:str='div.paginationtop'):
     '''
     page.wait_for_selector(locator)
     pass
+
+def preecher_campo_texto(painel:Page, atributo:str, texto:str) -> None:
+    painel.locator(f'[nmatributo="{atributo.upper()}"]').fill(texto)
+
+def preecher_campo_numero(painel:Page, atributo:str, num:int) -> None:
+    painel.locator(f'[nmatributo="{atributo.upper()}"]').fill(str(num))
+
+def preecher_campo_data(painel:Page, atributo:str, data:str) -> None:
+    seletor = f'[w-attr-name="{atributo.upper()}"] input'
+    painel.locator(seletor).fill(data)
+
+def preecher_campo_lookup(painel:Page, atributo:str) -> None:
+    seletor = f'tasy-listbox[data-testid="{atributo.upper()}"]'
+    painel.wait_for_selector(seletor)
+    painel.locator(seletor).select_option(value=60)
 
 def realizar_login(page:Page, usuario:str, senha:str)->Page:
     '''
@@ -125,38 +152,44 @@ def abrir_rat(page:Page, coluna:int=0) -> Page:
     
     return page
 
-def adicionar_registro(page:Page, wpainel_code:int) -> Page:
+def adicionar_registro(page:Page, wdbpanel:int|str) -> Page:
     page.wait_for_timeout(3000)
-    codigo = wpainel_code
-    aguardar_carregamento(page, '[w-code="1094281"] div#tabContent w-summarizer')
-    # verificar se lista vazia
-    add_bnt = page.locator('[w-code="1094281"] div#tabContent div[code="1094286"] div.datagrid-custom-empty-container.ng-scope')
+    painel = obter_painel(page, wdbpanel)
+    # aguardar_carregamento(painel, 'w-summarizer')
 
+    # Verificar se o botão azul do centro da tela está disponível.
+    add_bnt = painel.locator('div.datagrid-custom-empty-container.ng-scope')
     visivel = add_bnt.is_visible()
     ativo = add_bnt.is_enabled()
-
     
     if ( visivel & ativo ):
-        print('Adicionar pelo botão azul grande')
         add_bnt.locator('button').click()    
         return page
     
-
-
-    # [w-code="1094281"] div#tabContent div[code="1094286"] tasy-handlebar-new
-    add_link_azul = page.locator('[w-code="1094281"] div#tabContent div[code="1094286"] tasy-handlebar-new span:text("Adicionar")')
-    
+    # Verificar se o botão azul do centro da tela está disponível.
+    add_link_azul = painel.locator('tasy-handlebar-new span:text("Adicionar")')    
     visivel = add_link_azul.is_visible()
     ativo = add_link_azul.is_enabled()
     if (visivel & ativo):
-        print('Adicionar pelo handle')
         add_link_azul.click()
         return page
+    return page
+
+def preecher_form_atividade(page:Page, wdbpanel:int|str) -> Page:
+    painel = obter_painel(page, wdbpanel)
+
+    preecher_campo_data(painel=painel, atributo="DT_INICIO_ATIV", data= formatar_data('12/05/2026 08:00:00'))
+    preecher_campo_data(painel=painel, atributo="DT_FIM_ATIV", data= formatar_data('12/05/2026 12:00:00'))
+    preecher_campo_lookup(painel=painel, atributo="IE_CLASSIFICACAO")
+    preecher_campo_numero(painel=painel, atributo="NR_SEQ_ETAPA_CRON",num=30631 )
+    preecher_campo_texto(painel=painel, atributo="ds_atividade",texto=f"""texto em \nmultiplas \tlinhas""" )
+    sleep(5)
     return page
 
 def carregar_arquivo_dados():
     
     pass
+
 
 
 def run():
@@ -196,7 +229,9 @@ def run():
         # Abrir RAT
         page = abrir_rat(page=page)
 
-        page = adicionar_registro(page=page, wpainel_code=0)
+        page = adicionar_registro(page=page, wdbpanel=1094287)
+
+        page = preecher_form_atividade(page=page, wdbpanel=109287)
 
         page.wait_for_timeout(5000)
         browser.close()
