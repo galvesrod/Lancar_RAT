@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from time import sleep
 from datetime import date, datetime
 from pandas import pandas as pd, DataFrame
+from tasy_automation_helper import Logar, AbrirFuncao, ObterPainel, Formulario as form, Operadores
 
 MAIN_URL = "https://tasycorp-vivere.zion-srv.com/#/login"
 
@@ -24,99 +25,12 @@ def fechar_modal_pr_atividade(page:Page) -> Page:
     
     return page
 
-def obter_painel(page:Page, wdbpanel:str|int) -> Page:
-    locator = f'[dto-code="{str(wdbpanel)}"]'
-    painel = page.locator(locator)
-    if painel.count() > 0:
-        return painel
-    return page
-
 def aguardar_carregamento(page:Page, locator:str='div.paginationtop'):
     '''
     Aguardar a tela carregar, baseado no locator (locator). Padrão: div.paginationtop
     '''
     page.wait_for_selector(locator)
     pass
-
-def preecher_campo_texto(painel:Page, atributo:str, texto:str) -> None:
-    painel.locator(f'[nmatributo="{atributo.upper()}"]').fill(texto)
-
-def preencher_radiobutton(painel:Page, atributo:str, valor:str) -> None:
-    locator = '[w-attr-name="IE_MODALIDADE"]'
-    group = painel.locator(locator)
-    group.locator(f'span#{valor}').click()
-
-def preencher_checkbox(painel:Page, atributo:str, valor:bool) -> None:
-    locator = f'[data-testid="{atributo}"]'
-    chk = painel.locator(locator)
-    is_checked = painel.locator(f'{locator} input')
-
-    if is_checked.is_checked() == valor:
-        print('Não foi necessário realizar a operação')
-        return   
-
-    chk.click()
-    sleep(1)
-    if is_checked.is_checked() != valor:
-        print("Não foi possível realizar a operação")
-
-def preecher_campo_numero(painel:Page, atributo:str, num:int) -> None:
-    painel.locator(f'[nmatributo="{atributo.upper()}"]').fill(str(num))
-
-def preecher_campo_data(painel:Page, atributo:str, data:str) -> None:
-    seletor = f'[w-attr-name="{atributo.upper()}"] input'
-    painel.locator(seletor).fill(data)
-
-def preecher_campo_lookup(painel:Page, atributo:str, texto:str) -> None:
-    seletor = f'tasy-listbox[data-testid="{atributo.upper()}"]'
-    painel.wait_for_selector(seletor)
-    elemento  = painel.locator(seletor)
-    sleep(1)
-    elemento.click()
-    elemento.press("Enter")    
-    elemento.type(text="---")
-    sleep(1)
-    elemento.type(text=texto)
-
-def realizar_login(page:Page, usuario:str, senha:str)->Page:
-    '''
-    Esta função realizar o Login do usuário.
-    Recebe a pagina atual, o usuário e a senha
-    '''
-
-    # Aguardar tela estar carregada
-    page.wait_for_selector("span.w-footer__version.u-faint.ng-binding")
-    
-    usr = usuario
-    pwd = senha
-    
-    page.locator('xpath=//*[@id="loginUsername"]').fill(usr)        # Preeche usuário
-    page.locator('xpath=//*[@id="loginPassword"]').fill(pwd)        # Preenche senha
-    page.locator('xpath=//*[@id="loginForm"]/input[3]').click()     # Clica em Logar
-    sleep(1)
-
-    # Fechar MODAL "Este usuário já está conectado ao sistema. Desconectar a sessão anterior e prosseguir com o login?" caso apareça
-    dialogo = page.locator("#ngdialog1")
-    if dialogo.is_visible():
-        dialogo.locator("#w-dialog-box-ok-button").click()
-    
-    return page
-
-def abrir_funcao(page:Page, nome_funcao:str) -> Page:
-    '''
-    Abre uma função do TASY. Recebe a página atual e o nome da função a ser aberta
-    '''
-    nm_funcao = nome_funcao
-
-    page.wait_for_selector("w-footer")
-    loc_str = f'span.w-feature-app__name:text("{nm_funcao}")'
-
-    elemento = page.locator(loc_str)
-
-    if elemento:
-        elemento.click()
-    
-    return page
 
 def filtrar_projeto(page:Page, nr_seq_projeto:int) -> Page:
     '''
@@ -190,36 +104,8 @@ def abrir_rat(page:Page, coluna:int=0) -> Page:
     
     return page
 
-def adicionar_registro(page:Page, wdbpanel:int|str) -> Page:
-    page.wait_for_timeout(3000)
-    painel = obter_painel(page, wdbpanel)
-    # aguardar_carregamento(painel, 'w-summarizer')
-
-    # Verificar se o botão azul do centro da tela está disponível.
-    add_bnt = painel.locator('div.datagrid-custom-empty-container.ng-scope')
-    visivel = add_bnt.is_visible()
-    ativo = add_bnt.is_enabled()
-    
-    if ( visivel & ativo ):
-        add_bnt.locator('button').click()    
-        return page
-    
-    # Verificar se o botão azul do centro da tela está disponível.
-    add_link_azul = painel.locator('tasy-handlebar-new span:text("Adicionar")')    
-    visivel = add_link_azul.is_visible()
-    ativo = add_link_azul.is_enabled()
-    if (visivel & ativo):
-        add_link_azul.click()
-        return page
-    return page
-
-def salvar(page:Page, wdbpanel:int|str) -> Page:
-    painel = obter_painel(page=page, wdbpanel=wdbpanel)
-    painel.locator('tasy-wbutton[text="Salvar"]').click()
-    return page
-
 def preecher_form_atividade(page:Page, wdbpanel:int|str, dados: tuple) -> Page:
-    painel = obter_painel(page, wdbpanel)
+    painel = ObterPainel.obter_painel(page, wdbpanel)
     dt_inicio = formatar_data( str(dados.DT_INICIO), '%Y-%m-%d %H:%M:%S' )
     dt_fim = formatar_data( str(dados.DT_FIM), '%Y-%m-%d %H:%M:%S' )
     atividade_id = dados.ATIVIDADE_ID
@@ -227,12 +113,12 @@ def preecher_form_atividade(page:Page, wdbpanel:int|str, dados: tuple) -> Page:
     atividade = dados.DESCRICAO
     modalidade = dados.MODALIDADE
 
-    preecher_campo_data(painel=painel, atributo="DT_INICIO_ATIV", data=dt_inicio)
-    preecher_campo_data(painel=painel, atributo="DT_FIM_ATIV", data= dt_fim)
-    preecher_campo_numero(painel=painel, atributo="NR_SEQ_ETAPA_CRON",num=atividade_id )
-    preecher_campo_lookup(painel=painel, atributo="IE_CLASSIFICACAO",texto=classificacao)
-    preecher_campo_texto(painel=painel, atributo="ds_atividade",texto=atividade )
-    preencher_radiobutton(painel=painel, atributo="IE_MODALIDADE", valor=modalidade )
+    form.preecher_data(painel=painel, atributo="DT_INICIO_ATIV", data=dt_inicio)
+    form.preecher_data(painel=painel, atributo="DT_FIM_ATIV", data= dt_fim)
+    form.preecher_numero(painel=painel, atributo="NR_SEQ_ETAPA_CRON",num=atividade_id )
+    form.preecher_lookup(painel=painel, atributo="IE_CLASSIFICACAO",texto=classificacao)
+    form.preecher_texto(painel=painel, atributo="ds_atividade",texto=atividade )
+    form.preencher_radiobutton(painel=painel, atributo="IE_MODALIDADE", valor=modalidade )
     return page
 
 def carregar_arquivo_dados():
@@ -254,18 +140,16 @@ def lancar_rats(page:Page, dados:DataFrame):
             page = abrir_rat(page=page)        
             atividades = df[ (df["PROJETO_ID"] == projeto) & (df["RAT_ID"] == rat) ]
             for atividade in atividades.itertuples():                
-                page = adicionar_registro(page=page, wdbpanel=1094287)
+                page = Operadores.adicionar(page=page, wdbpanel=1094287)
                 page = preecher_form_atividade(page=page, wdbpanel=109287,dados=atividade)
 
                 sleep(1)
-                page = salvar(page=page, wdbpanel=1094287)
+                page = Operadores.salvar(page=page, wdbpanel=1094287)
                 sleep(2)
                 page = fechar_modal_operacao_abortada(page=page)
                 sleep(2)
                 page = fechar_modal_pr_atividade(page=page)
         
-
-
 def run():
     with sync_playwright() as p:
         df = carregar_arquivo_dados()
@@ -288,10 +172,10 @@ def run():
         # Login
         usr = os.getenv("TASY_USR")
         pwd = os.getenv("TASY_PWD")
-        page = realizar_login(page=page, usuario=usr, senha=pwd)
+        page = Logar.realizar_login(page=page, usuario=usr, senha=pwd)
         
         # Abrir Função
-        page = abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
+        page = AbrirFuncao.abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
         lancar_rats(page, df)
         page.wait_for_timeout(5000)
         print('Fim do processo')
