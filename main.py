@@ -186,7 +186,7 @@ def lancar_rats(page:Page, dados:DataFrame):
                 sleep(2)
                 page = fechar_modal_pr_atividade(page=page)
                 marcar_linha_como_lancada(index=atividade.Index)
-                print(f'RAT: {atividade.RAT_ID + 1} - {atividade.Index} de { len(atividades)} lançadas.')
+                print(f'RAT: {atividade.RAT_ID} - {indice} de { len(atividades)} lançadas.')
 
             
         
