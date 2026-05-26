@@ -1,4 +1,5 @@
 import os
+import openpyxl
 
 from playwright.sync_api import Page, sync_playwright
 from dotenv import load_dotenv
@@ -121,11 +122,44 @@ def preecher_form_atividade(page:Page, wdbpanel:int|str, dados: tuple) -> Page:
     form.preencher_radiobutton(painel=painel, atributo="IE_MODALIDADE", valor=modalidade )
     return page
 
+def marcar_linha_como_lancada(index: int, status: str = "Sim"):
+    """Abre o arquivo Excel e grava o status na linha correspondente."""
+    wb = openpyxl.load_workbook(ARQUIVO)
+    ws = wb.active
+
+    # Verificar se a coluna CONTROLE já existe, senão cria
+    headers = [cell.value for cell in ws[1]]
+    if "LANCADA" not in headers:
+        ie_lancada = len(headers) + 1
+        ws.cell(row=1, column=ie_lancada, value="LANCADA")
+    else:
+        ie_lancada = headers.index("LANCADA") + 1
+
+    # index do itertuples começa em 0, mas no Excel linha 1 = header, linha 2 = primeira linha de dados
+    row_excel = index + 2  # +1 pelo header, +1 porque index pandas começa em 0
+
+    ws.cell(row=row_excel, column=ie_lancada, value=status)
+    wb.save(ARQUIVO)
+
+
+
 def carregar_arquivo_dados():
-    return pd.read_excel(r'.\data\dados.xlsx')
-    
+    df = pd.read_excel(ARQUIVO)
+    df = df.reset_index(drop=True)
+    return df
+
+
 def lancar_rats(page:Page, dados:DataFrame):
     df = dados
+
+    df = dados[dados["LANCADA"] != "Sim"] if "LANCADA" in dados.columns else dados
+    qtde_rats = len(df)
+    if qtde_rats == 0:
+        print("Nada há lançar")
+        return
+
+    print(f"Qtde total de RATs a serem Lançadas: {qtde_rats}")
+
     projetos = df["PROJETO_ID"].unique()
 
     for projeto in projetos:
@@ -139,7 +173,9 @@ def lancar_rats(page:Page, dados:DataFrame):
             # Abrir RAT
             page = abrir_rat(page=page)        
             atividades = df[ (df["PROJETO_ID"] == projeto) & (df["RAT_ID"] == rat) ]
+            indice = 0
             for atividade in atividades.itertuples():                
+                indice+=1
                 page = Operadores.adicionar(page=page, wdbpanel=1094287)
                 page = preecher_form_atividade(page=page, wdbpanel=109287,dados=atividade)
 
@@ -149,10 +185,13 @@ def lancar_rats(page:Page, dados:DataFrame):
                 page = fechar_modal_operacao_abortada(page=page)
                 sleep(2)
                 page = fechar_modal_pr_atividade(page=page)
+                marcar_linha_como_lancada(index=atividade.Index)
+                print(f'RAT: {atividade.RAT_ID + 1} - {atividade.Index} de { len(atividades)} lançadas.')
+
+            
         
 def run():
     with sync_playwright() as p:
-        df = carregar_arquivo_dados()
         browser = p.chromium.launch(
             headless=False,channel="chrome",
             args=[
@@ -176,12 +215,16 @@ def run():
         
         # Abrir Função
         page = AbrirFuncao.abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
+        
+        df = carregar_arquivo_dados()
         lancar_rats(page, df)
+        
         page.wait_for_timeout(5000)
         print('Fim do processo')
         browser.close()
 
 
 if __name__ == "__main__":
+    ARQUIVO = r'.\data\dados.xlsx'
     load_dotenv()    
     run()
