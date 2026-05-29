@@ -6,9 +6,7 @@ from dotenv import load_dotenv
 from time import sleep
 from datetime import date, datetime
 from pandas import pandas as pd, DataFrame
-from tasy_automation_helper import Logar, AbrirFuncao, ObterPainel, Formulario as form, Operadores
-
-MAIN_URL = "https://tasycorp-vivere.zion-srv.com/#/login"
+from tasy_automation_helper import Logar, ObterPainel, Formulario as form, Operadores, Funcao
 
 def formatar_data(data:str, format:str='%d/%m/%Y %H:%M:%S')->str:    
     return datetime.strptime(data,format).strftime('%d/%m/%Y %H:%M:%S')
@@ -141,17 +139,13 @@ def marcar_linha_como_lancada(index: int, status: str = "Sim"):
     ws.cell(row=row_excel, column=ie_lancada, value=status)
     wb.save(ARQUIVO)
 
-
-
 def carregar_arquivo_dados():
     df = pd.read_excel(ARQUIVO)
     df = df.reset_index(drop=True)
     return df
 
-
 def lancar_rats(page:Page, dados:DataFrame):
     df = dados
-
     df = dados[dados["LANCADA"] != "Sim"] if "LANCADA" in dados.columns else dados
     qtde_rats = len(df)
     if qtde_rats == 0:
@@ -188,10 +182,11 @@ def lancar_rats(page:Page, dados:DataFrame):
                 marcar_linha_como_lancada(index=atividade.Index)
                 print(f'RAT: {atividade.RAT_ID} - {indice} de { len(atividades)} lançadas.')
 
-            
-        
+
 def run():
     with sync_playwright() as p:
+        MAIN_URL = os.getenv("MAIN_URL")
+
         browser = p.chromium.launch(
             headless=False,channel="chrome",
             args=[
@@ -212,19 +207,23 @@ def run():
         usr = os.getenv("TASY_USR")
         pwd = os.getenv("TASY_PWD")
         page = Logar.realizar_login(page=page, usuario=usr, senha=pwd)
+        sleep(5)
+        
+        # Fechar a CI se estiver aberta
+        page = Funcao.fechar_funcao(page=page, nome_funcao='Comunicação Interna')        
         
         # Abrir Função
-        page = AbrirFuncao.abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
+        page = Funcao.abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
         
         df = carregar_arquivo_dados()
         lancar_rats(page, df)
         
-        page.wait_for_timeout(5000)
+        # # page.wait_for_timeout(5000)
         print('Fim do processo')
         browser.close()
 
 
 if __name__ == "__main__":
     ARQUIVO = r'.\data\dados.xlsx'
-    load_dotenv()    
+    load_dotenv()  
     run()
