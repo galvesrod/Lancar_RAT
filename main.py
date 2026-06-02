@@ -107,8 +107,12 @@ def abrir_rat(page:Page, coluna:int=0) -> Page:
 
 def preecher_form_atividade(page:Page, wdbpanel:int|str, dados: tuple) -> Page:
     painel = nav.obter_painel(page, wdbpanel)
-    dt_inicio = formatar_data( str(dados.DT_INICIO), '%Y-%m-%d %H:%M:%S' )
-    dt_fim = formatar_data( str(dados.DT_FIM), '%Y-%m-%d %H:%M:%S' )
+
+    DT_INICIO = datetime.combine(date=dados.DATA, time=dados.HR_INICIO )
+    DT_FIM = datetime.combine(date=dados.DATA, time=dados.HR_FIM )
+    dt_inicio = formatar_data( str(DT_INICIO), '%Y-%m-%d %H:%M:%S' )
+    dt_fim = formatar_data( str(DT_FIM), '%Y-%m-%d %H:%M:%S' )
+
     atividade_id = dados.ATIVIDADE_ID
     classificacao = dados.CLASSIFICACAO
     atividade = dados.DESCRICAO
@@ -142,13 +146,14 @@ def marcar_linha_como_lancada(index: int, status: str = "Sim"):
     wb.save(ARQUIVO)
 
 def carregar_arquivo_dados():
-    df = pd.read_excel(ARQUIVO)
+    df = pd.read_excel(ARQUIVO, sheet_name="DADOS")
     df = df.reset_index(drop=True)
     return df
 
 def lancar_rats(page:Page, dados:DataFrame):
     df = dados
     df = dados[dados["LANCADA"] != "Sim"] if "LANCADA" in dados.columns else dados
+    df["DATA"] = pd.to_datetime(df["DATA"], unit='D', origin='1899-12-30')
     qtde_rats = len(df)
     if qtde_rats == 0:
         print("Nada há lançar")
@@ -183,7 +188,6 @@ def lancar_rats(page:Page, dados:DataFrame):
                 page = fechar_modal_pr_atividade(page=page)
                 marcar_linha_como_lancada(index=atividade.Index)
                 print(f'RAT: {atividade.RAT_ID} - {indice} de { len(atividades)} lançadas.')
-
 
 def run():
     with sync_playwright() as p:
