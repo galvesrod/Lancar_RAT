@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 from time import sleep
 from datetime import date, datetime
 from pandas import pandas as pd, DataFrame
-from tasy_automation_helper import Logar, ObterPainel, Formulario as form, Operadores, Funcao
+# from tasy_automation_helper import Logar, ObterPainel, Formulario as form, Operadores, Funcao
+from tasy_automation_helper import Formulario as form
+from tasy_automation_helper import Navegar as nav
 
 def formatar_data(data:str, format:str='%d/%m/%Y %H:%M:%S')->str:    
     return datetime.strptime(data,format).strftime('%d/%m/%Y %H:%M:%S')
@@ -104,7 +106,7 @@ def abrir_rat(page:Page, coluna:int=0) -> Page:
     return page
 
 def preecher_form_atividade(page:Page, wdbpanel:int|str, dados: tuple) -> Page:
-    painel = ObterPainel.obter_painel(page, wdbpanel)
+    painel = nav.obter_painel(page, wdbpanel)
     dt_inicio = formatar_data( str(dados.DT_INICIO), '%Y-%m-%d %H:%M:%S' )
     dt_fim = formatar_data( str(dados.DT_FIM), '%Y-%m-%d %H:%M:%S' )
     atividade_id = dados.ATIVIDADE_ID
@@ -170,11 +172,11 @@ def lancar_rats(page:Page, dados:DataFrame):
             indice = 0
             for atividade in atividades.itertuples():                
                 indice+=1
-                page = Operadores.adicionar(page=page, wdbpanel=1094287)
+                page = form.adicionar(page=page, wdbpanel=1094287)
                 page = preecher_form_atividade(page=page, wdbpanel=109287,dados=atividade)
 
                 sleep(1)
-                page = Operadores.salvar(page=page, wdbpanel=1094287)
+                page = form.salvar(page=page, wdbpanel=1094287)
                 sleep(2)
                 page = fechar_modal_operacao_abortada(page=page)
                 sleep(2)
@@ -206,14 +208,15 @@ def run():
         # Login
         usr = os.getenv("TASY_USR")
         pwd = os.getenv("TASY_PWD")
-        page = Logar.realizar_login(page=page, usuario=usr, senha=pwd)
+        page = nav.realizar_login(page=page, usuario=usr, senha=pwd)
+        
         sleep(5)
         
         # Fechar a CI se estiver aberta
-        page = Funcao.fechar_funcao(page=page, nome_funcao='Comunicação Interna')        
+        page = nav.fechar_funcao(page=page, nome_funcao='Comunicação Interna')        
         
         # Abrir Função
-        page = Funcao.abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
+        page = nav.abrir_funcao(page=page, nome_funcao="Gestão de Projetos Philips")
         
         df = carregar_arquivo_dados()
         lancar_rats(page, df)
